@@ -6,8 +6,9 @@ authors = ["yzakius <dev@yzakius.me>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-telepot = "^12.7"
 python-decouple = "^3.3"
+requests = "^2.24.0"
+pyTelegramBotAPI = "^3.7.2"
 
 [tool.poetry.dev-dependencies]
 
