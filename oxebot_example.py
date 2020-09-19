@@ -2,13 +2,15 @@ import random
 import telebot
 import requests
 import json
-from decouple import config
+#from decouple import config
 
-bot = telebot.TeleBot(config("telegram_key"))
+bot = telebot.TeleBot("Your_key_here")
+
 
 @bot.message_handler(commands=["start", "help"])
 def send_help(message):
-	bot.reply_to(message, "Estamos em  🚧")
+    bot.reply_to(message, "Estamos em  🚧")
+
 
 @bot.message_handler(commands=["tempo"])
 def wetaher(message):
@@ -22,11 +24,30 @@ def wetaher(message):
          weather_code = "🌧"
     elif weather_code == "227":
         weather_code = "⛄"
+    elif weather_code == "116":
+        weather_code = "⛅"
     else:
         weather_code = "🤔"
     bot.reply_to(
         message, f"A temperatura em Recife está {temperature} graus. {weather_code}"
     )
+
+
+@bot.message_handler(commands=["cotacao"])
+def cotation(message):
+    get_cotation = requests.get(
+     "https://economia.awesomeapi.com.br/json/all", headers={"user-agen": "curl"}
+    )
+    cota = get_cotation.json()
+    dolar = float(cota['USD']['high'])
+    euro = float(cota['EUR']['high'])
+    libra = float(cota['GBP']['high'])
+    bot.reply_to(
+        message, f'''O dólar está custando: {dolar:.2f}R$,\n
+        O euro está custando: {euro:.2f}R$,\n
+        A libra está custando: {libra:.2f}R$'''
+    )
+
 
 @bot.message_handler(content_types = ["text"])
 def read_words(message):
@@ -45,6 +66,7 @@ def read_words(message):
         bot.send_message(chat_id, oxebot_message)
     elif "hehe" in text:
         bot.send_message(chat_id, "Putz. Olha só essa risada kkk")
+
 
 bot.polling()
 
