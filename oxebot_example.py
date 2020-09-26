@@ -4,7 +4,7 @@ import requests
 import json
 #from decouple import config
 
-bot = telebot.TeleBot("Your_key_here")
+bot = telebot.TeleBot("Your_key_")
 
 
 @bot.message_handler(commands=["start", "help"])
