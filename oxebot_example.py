@@ -2,9 +2,9 @@ import random
 import telebot
 import requests
 import json
-#from decouple import config
+from decouple import config
 
-bot = telebot.TeleBot("Your_key_Here.")
+bot = telebot.TeleBot(config("telegram_key"))
 
 
 @bot.message_handler(commands=["start", "help"])
