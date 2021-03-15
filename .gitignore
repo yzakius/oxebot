@@ -3,6 +3,12 @@ oxebot.py
 general.txt
 yzakius.txt
 
+# IDE
+.vscode/
+
+# Anothers
+dump.rdb
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
