@@ -5,6 +5,7 @@ yzakius.txt
 
 # IDE
 .vscode/
+.idea/
 
 # Anothers
 dump.rdb
