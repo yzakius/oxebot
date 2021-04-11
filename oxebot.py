@@ -52,6 +52,34 @@ def cotation(message):
     )
 
 
+@bot.message_handler(commands=['quote_add'])
+def quote_add(message):
+    text = message.text
+    chat_id = message.chat.id
+    if len(text) > 10:
+        text_replaced = text.replace('/quote_add ', '')
+        quote = open('assets/text/quotes.txt', 'a')
+        quote.write(f'\n{text_replaced}')
+        quote.close()
+        bot.send_message(chat_id, 'Arquivado com sucesso ;)')
+    else:
+        bot.send_message(chat_id, 'Leia o MANUAL!!!!!!')
+
+
+@bot.message_handler(commands=['quote'])
+def quote(message):
+    chat_id = message.chat.id
+    lines = open('assets/text/quotes.txt').read().splitlines()
+    oxebot_message = random.choice(lines)
+    bot.send_message(
+        chat_id,
+        f'=========================== \n'
+        f'Momento de Sabedoria no OXE: \n'
+        f'=========================== \n\n'
+        f'{oxebot_message}'
+    )
+
+
 @bot.message_handler(content_types=['text'])
 def read_words(message):
     text = message.text.lower()
