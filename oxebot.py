@@ -1,6 +1,7 @@
 import random
 import telebot
 import requests
+import time
 from decouple import config
 
 bot = telebot.TeleBot(config('telegram_key'))
@@ -55,23 +56,27 @@ def cotation(message):
 def read_words(message):
     text = message.text.lower()
     print(f'[{message.from_user.first_name}]: {text}')
-    chat_id = message.chat.id
-    if 'acho' in text:
-        bot.send_message(chat_id, 'Você acha ou tem certeza?')
-    elif 'mas' in text:
-        lines = open('general.txt').read().splitlines()
-        oxebot_message = random.choice(lines)
-        bot.send_message(chat_id, oxebot_message)
-    elif 'yzakius' in text:
-        lines = open('yzakius.txt').read().splitlines()
-        oxebot_message = random.choice(lines)
-        bot.send_message(chat_id, oxebot_message)
-    elif 'hehe' in text:
-        bot.send_message(chat_id, 'Putz. Olha só essa risada kkk')
+    msg_time = message.date
+    current_time = int(time.time())
+    msg_tolerance_time = current_time - msg_time
+    if msg_tolerance_time <= 3:
+        chat_id = message.chat.id
+        if 'acho' in text:
+            lines = open('assets/text/acho.txt').read().splitlines()
+            oxebot_message = random.choice(lines)
+            bot.send_message(chat_id, oxebot_message)
+        elif "mas" in text:
+            lines = open('assets/text/general.txt').read().splitlines()
+            oxebot_message = random.choice(lines)
+            bot.send_message(chat_id, oxebot_message)
+        elif 'yzakius' in text:
+            lines = open('assets/text/yzakius.txt').read().splitlines()
+            oxebot_message = random.choice(lines)
+            bot.send_message(chat_id, oxebot_message)
+        elif 'hehe' in text:
+            lines = open('assets/text/risada.txt').read().splitlines()
+            oxebot_message = random.choice(lines)
+            bot.send_message(chat_id, oxebot_message)
 
 
 bot.polling()
-
-# while True:
-#    pass
-#    time.sleep(1)
