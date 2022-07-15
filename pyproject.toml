@@ -13,6 +13,7 @@ python-decouple = "^3.4"
 telebot = "^0.0.4"
 
 [tool.poetry.dev-dependencies]
+cryptography = "^37.0.4"
 
 [build-system]
 requires = ["poetry>=0.12"]

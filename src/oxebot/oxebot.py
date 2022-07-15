@@ -3,6 +3,7 @@ import telebot
 import requests
 import time
 from decouple import config
+from utils import can_talk
 
 bot = telebot.TeleBot(config('telegram_key'))
 
@@ -169,21 +170,25 @@ def read_words(message):
     if msg_tolerance_time <= 3:
         chat_id = message.chat.id
         if 'acho' in text:
-            lines = open('assets/text/acho.txt').read().splitlines()
-            oxebot_message = random.choice(lines)
-            bot.send_message(chat_id, oxebot_message)
+            if can_talk():
+                lines = open('assets/text/acho.txt').read().splitlines()
+                oxebot_message = random.choice(lines)
+                bot.send_message(chat_id, oxebot_message)
         elif "mas" in text:
-            lines = open('assets/text/general.txt').read().splitlines()
-            oxebot_message = random.choice(lines)
-            bot.send_message(chat_id, oxebot_message)
+            if can_talk():
+                lines = open('assets/text/general.txt').read().splitlines()
+                oxebot_message = random.choice(lines)
+                bot.send_message(chat_id, oxebot_message)
         elif 'yzakius' in text:
-            lines = open('assets/text/yzakius.txt').read().splitlines()
-            oxebot_message = random.choice(lines)
-            bot.send_message(chat_id, oxebot_message)
+            if can_talk():
+                lines = open('assets/text/yzakius.txt').read().splitlines()
+                oxebot_message = random.choice(lines)
+                bot.send_message(chat_id, oxebot_message)
         elif 'hehe' in text:
-            lines = open('assets/text/risada.txt').read().splitlines()
-            oxebot_message = random.choice(lines)
-            bot.send_message(chat_id, oxebot_message)
+            if can_talk():
+                lines = open('assets/text/risada.txt').read().splitlines()
+                oxebot_message = random.choice(lines)
+                bot.send_message(chat_id, oxebot_message)
 
 
 bot.polling()
