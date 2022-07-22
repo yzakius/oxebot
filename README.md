@@ -1,10 +1,11 @@
-# oxebot
-Um bot simples para estudos.
+# Motivação
 
-## Contribuindo
-Clonar o repositório `git clone https://github.com/yzakius/oxebot.git`
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-cp contrib/env-sample .env
-python oxebot_sample.py
+O Oxebot é um bot para telegram que nasceu para estudos pessoais e depois virou uma brincadeira entre amigos que querem aprender sobre Python e Git.
+
+Caso queira rodá-lo no seu computador, veja os passos de instalação na nossa [wiki](https://github.com/yzakius/oxebot/wiki).
+
+Contribuições são bem-vindas!
+
+## Roadmap
+
+**EM BREVE**
