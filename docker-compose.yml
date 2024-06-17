@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  oxe:
+    build: .
+    volumes:
+      - put_your_assets_path_here:/src/assets/:Z 
+    restart: always
