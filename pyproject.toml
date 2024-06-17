@@ -13,6 +13,9 @@ pyTelegramBotAPI = "^4.6.0"
 [tool.poetry.dev-dependencies]
 cryptography = "^37.0.4"
 
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.2"
+
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
