@@ -1,7 +1,8 @@
 version: "3.9"
 services:
   oxe:
+    container_name: oxe-bot
     build: .
     volumes:
-      - put_your_assets_path_here:/src/assets/:Z 
+      - ./assets:/src/assets/:Z 
     restart: always
