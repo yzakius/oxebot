@@ -10,7 +10,17 @@ bot = telebot.TeleBot(config("telegram_key"))
 
 @bot.message_handler(commands=["start", "help"])
 def send_help(message):
-    bot.reply_to(message, "Estamos em  🚧")
+    help_text = (
+        "*Comandos disponíveis no OxeBot:*\n\n"
+        "*/start* ou */help* - Mostra esta mensagem de ajuda\n\n"
+        "*/tempo* - Mostra a temperatura atual em Recife\n\n"
+        "*/cotacao* - Mostra a cotação do dólar, euro e libra\n\n"
+        "*/quote* - Exibe uma citação aleatória de sabedoria\n\n"
+        "*/quote_add <texto>* - Adiciona uma nova citação\n\n"
+        "*Respostas automáticas:*\n"
+        "O bot também responde automaticamente quando detecta: \"acho\", \"mas\", \"yzakius\" ou \"hehe\""
+    )
+    bot.reply_to(message, help_text, parse_mode="Markdown")
 
 
 @bot.message_handler(commands=["tempo"])
